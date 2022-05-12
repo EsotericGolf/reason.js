@@ -1,0 +1,26 @@
+compile = ["./node_modules/.bin/bsb", "-make-world"]
+run = ["node", "src/Main.bs.js"]
+
+entrypoint = "src/Main.re"
+
+hidden = [".template", ".merlin", "lib"]
+
+[nix]
+channel = "stable-21_11"
+
+[env]
+PATH = "/home/runner/${REPL_SLUG}/node_modules/.bin:/home/runner/${REPL_SLUG}/.template/bin"
+XDG_CONFIG_HOME = "/home/runner/.config"
+
+[packager]
+language = "nodejs"
+
+[packager.features]
+packageSearch = true
+enabledForHosting = false
+
+[languages.reason]
+pattern = "**/*.re"
+
+[languages.reason.languageServer]
+start = [ "reason-language-server" ]
